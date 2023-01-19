@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Found</title>
+    <%- include('partials/head') %>
+
+</head>
+<body>
+    <%- include('partials/navigation') %>
+<br>
+    <section class="container vh-100">
+        <article class="row">
+            <div class="col-12 col-sm-3 mt-5">
+                <div class="mt-5 d-flex justify-content-center">
+                    <%- include('partials/icon') %>
+                </div>
+            </div>
+            <div class="col-12 col-sm-9 mt-5 fw-light">
+                <h1 class="mt-5 display-2">Pagen not Found</h1>
+                <p>Ha ocurrido un error</p>
+                <p>La pagina no ha sido encontrada</p>
+                <a href="/" class="fs-3">Volver</a>
+            </div>
+        </article>
+    </section>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Verb</title>
+    <%- include('partials/head') %>
+</head>
+<body>
+
+    <%- include('partials/navigation') %>
+
+    <section class="container vh-100 d-flex justify-content-center align-itmes-center">
+        <div class="mt-5 d-flex flex-column justify-content-center align-itmes-center text-center">
+
+            <div class=" mt-5 d-flex justify-content-center">
+                <%- include('partials/icon') %>
+            </div>
+
+           
+            <div class="row">
+                <div class="col-12">
+                    <img src="../public/img/Superintendant-alone.svg" alt="">
+                    <p class="display-5"> <%= title %> </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table text-center m-auto w-75">
+                        <thead>
+                            <tr>
+                                <th class="p-3" scope="col">Verb</th>
+                                <th class="p-3" scope="col">Verb Past</th>
+                                <th class="p-3" scope="col">Verb Participle</th>
+                                <th class="p-3" scope="col">Verb Traslade</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-capitalize">
+                            <tr>
+                                <td class="p-3">
+                                    <%= verb %>
+                                </td>
+                                <td class="p-3">
+                                    <%= verbPast %>
+                                </td>
+                                <td class="p-3"> 
+                                    <%= verbParticiple %>
+                                </td>
+                                <td class="p-3">
+                                    <%= verbTraslade %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 py-4">
+                    <p class="fs-5"> <%= contador %> | <%= limit %> </p>
+                </div>
+                <div class="col-12">
+                    <% if (contador == limit ) { %>
+                        <h2 class="mb-4">Ganaste</h2>
+                        <a href="/" class="btn btn-success w-50">Volver a empezar</a>
+                    <% } else if( contador == 0) { %>
+                        <h2 class="mb-4">Perdiste</h2>
+                        <a href="/" class="btn btn-danger w-50">Volver a empezar</a>
+                    <% } else { %>
+                        <div class="row">
+                            <div class="col-12">
+                    
+                                <form method="POST">
+
+                                    <div class="form-group">
+                                        <input class="px-2 py-2 mb-2   inputVerb" 
+                                        type="text" 
+                                        name="verb" 
+                                        placeholder="Escribe el verbo que falta" 
+                                        autofocus  
+                                        required >
+                                    </div>
+                                    <br>
+                    
+                                    <div class="form-group">
+                                        <input type="submit" value="Validate" class=" btn btn-primary w-50">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="col-12 mt-3 d-flex justify-content-center">
+               
+                    <% if (badVerbs.length) { %>                    
+                        <span class="text-danger"> <%= badVerbs[badVerbs.length - 1] %> </span>    
+                    <% } else { %>
+                        <p> - </p>
+                    <% } %>
+    
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
+  
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>
