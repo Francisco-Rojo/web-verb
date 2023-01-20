@@ -33,7 +33,7 @@ const getVerbs = async (req, res) => {
         switch (Math.floor(op)) {
             case 0:
                 const verb = getVerb()
-                res.render('index', {
+                res.status(200).render('index', {
                     title: "Verb",
                     verb: 'x',  
                     verbPast: verb.past,   
@@ -47,7 +47,7 @@ const getVerbs = async (req, res) => {
                 break;
             case 1:
                 const verbPast = getVerb()
-                res.render('index', { 
+                res.status(200).render('index', { 
                     title: "Verb Past",
                     verb: verbPast.verb,  
                     verbPast: 'x',   
@@ -61,7 +61,7 @@ const getVerbs = async (req, res) => {
                 break;
             case 2:
                 const verbParticiple = getVerb()
-                res.render('index', {
+                res.status(200).render('index', {
                     title: "Verb Participle",  
                     verb: verbParticiple.verb,  
                     verbPast: verbParticiple.past,   
@@ -74,7 +74,7 @@ const getVerbs = async (req, res) => {
                 listVerb.push(verbParticiple.participle)
                 break;
             default:
-                res.render('error')
+                res.status(400).render('error')
                 break;
         }
     }
@@ -82,7 +82,7 @@ const getVerbs = async (req, res) => {
 }
 
 const guide = (req, res) => {
-    res.render('guide')
+    res.status(200).render('guide')
 }
 
 const downloadList = (req, res) => {
@@ -93,7 +93,7 @@ const postVerb = (req, res) => {
     const data = req.body.verb
 
     if (!data) {
-        res.render('error')
+        res.status(400).render('error')
     }
 
     if (data.toLowerCase().trim() === listVerb[listVerb.length - 1]) {
