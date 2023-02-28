@@ -1,5 +1,6 @@
 # Web Verb
-Web verb is an app web that you can learn and practice irregular verbs 
+Web verb is an app web that you can learn and practice irregular verbs. 
+
 Link: https://webverb.up.railway.app/
 
 ## usage
