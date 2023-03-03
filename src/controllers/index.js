@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 
-import getVerb from '../services/index.js'
+import verbService  from '../services/index.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -11,10 +11,8 @@ let contador = 1
 const limit = 7
 
 const getVerbs = async (req, res) => {
-
     let op = Math.random()
     op = op * 3
-
     if (contador === limit || contador === 0) {
         res.render( 'index',  {
             title: "-",
@@ -32,8 +30,8 @@ const getVerbs = async (req, res) => {
     } else {
         switch (Math.floor(op)) {
             case 0:
-                const verb = getVerb()
-                res.status(200).render('index', {
+                const verb = await verbService.getVerb()
+                 res.status(200).render('index', {
                     title: "Verb",
                     verb: 'x',  
                     verbPast: verb.past,   
@@ -46,8 +44,8 @@ const getVerbs = async (req, res) => {
                 listVerb.push(verb.verb)
                 break;
             case 1:
-                const verbPast = getVerb()
-                res.status(200).render('index', { 
+                const verbPast = await verbService.getVerb()
+                 res.status(200).render('index', { 
                     title: "Verb Past",
                     verb: verbPast.verb,  
                     verbPast: 'x',   
@@ -60,8 +58,8 @@ const getVerbs = async (req, res) => {
                 listVerb.push(verbPast.past)
                 break;
             case 2:
-                const verbParticiple = getVerb()
-                res.status(200).render('index', {
+                const verbParticiple = await verbService.getVerb()
+                 res.status(200).render('index', {
                     title: "Verb Participle",  
                     verb: verbParticiple.verb,  
                     verbPast: verbParticiple.past,   
@@ -79,6 +77,11 @@ const getVerbs = async (req, res) => {
         }
     }
 
+}
+
+const verbsList = async(req, res) => {
+    const verbs = await verbService.getVerbs()
+    res.status(200).render('verbsList', {verbs})    
 }
 
 const guide = (req, res) => {
@@ -112,4 +115,4 @@ const postVerb = (req, res) => {
 }
 
 
-export default {getVerbs, guide, downloadList, postVerb}
+export default {getVerbs, verbsList, guide, downloadList, postVerb}

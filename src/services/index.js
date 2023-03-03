@@ -1,8 +1,13 @@
-import searchVerb from '../database/index.js'
+import db from '../database/index.js'
 
-const getVerb = () => {
-    const getVerb =  searchVerb()
+const getVerb = async () => {
+    const getVerb = await db.searchVerb()
     return getVerb
 }
 
-export default getVerb
+const getVerbs = async () => {
+    const getVerbs = await db.searchVerbs()
+    return getVerbs
+}
+
+export default {getVerb, getVerbs}
