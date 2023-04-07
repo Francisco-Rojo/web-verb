@@ -13,5 +13,12 @@ const searchVerb = () => {
     return verbs[Math.floor(numVerb)];
 }
 
-export default searchVerb
+const searchVerbs = () => {
+    const data = fs.readFileSync(join(__dirname, 'irregularVerbs.json'));
+    const obj = JSON.parse(data)
+    
+    return obj
+}
+
+export default {searchVerb, searchVerbs}
 

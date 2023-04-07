@@ -24,3 +24,4 @@ for run the project in dev with nodemon, you have to run the following code
 ```bash
 npm run dev 
 ```
+    
