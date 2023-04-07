@@ -1,1 +1,1 @@
-alert('hola mundo')
+console.log('hi from file app.js');
